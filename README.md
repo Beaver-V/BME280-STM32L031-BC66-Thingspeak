@@ -2,8 +2,11 @@
 
 STM32CubeIDE проект для отправки погодных данных на сервер thingspeak.com
 
+
 Микроконтролер: STM32L031F6P6
+
 Датчик:         BME280
+
 Модем:          BC66NADA-04-STD
 
 
@@ -16,9 +19,13 @@ STM32CubeIDE проект для отправки погодных данных 
 
 STM32CubeIDE project to send weather data to thingspeak.com server
 
+
 Microcontroller: STM32L031F6P6
+
 Sensor: BME280
+
 Modem: BC66NADA-04-STD
+
 
 To reduce power consumption, the STM32L031 is in STOP mode most of the time and the BC66 is turned off. The STM32L031 is brought out of STOP mode by the RTC timer. After waking up, the microcontroller triggers the BME280 for measurement once. Then the program turns on the BC66 and waits for it to register in the NB-IoT network. If registration on the network was successful, a connection to the server is made and data is sent. In addition to temperature, pressure and humidity, battery voltage and network signal strength are also sent to the server. After sending the data, the server is disconnected, the BC66 is turned off and the microcontroller is put into STOP mode. The PSM and eDRX modes of the BC66 module are not used, maybe they will be implemented in future versions of the program.
 
